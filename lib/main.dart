@@ -1,5 +1,4 @@
-
-
+import 'package:email_sender/pages/homePage/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,46 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class CounterController extends GetxController {
-  var counter = 0.obs;
-
-  void increase() {
-    counter++;
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key, this.title});
-  final title;
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(CounterController());
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => Text("You have clicked this ${controller.counter} times"),
-            )
-            
-          ],          
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(onPressed: controller.increase, child: Icon(Icons.add),),
+      home: const HomePage(title: 'EMAIL SENDER'),
     );
   }
 }
