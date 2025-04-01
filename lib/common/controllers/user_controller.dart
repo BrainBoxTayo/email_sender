@@ -1,5 +1,4 @@
 import 'package:email_sender/common/widgets/loaders/loaders.dart';
-import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:email_sender/data/repositories/user/user_repository.dart';
 import 'package:get/get.dart';
 

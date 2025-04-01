@@ -2,7 +2,6 @@ import 'package:email_sender/data/repositories/authentication/authentication_rep
 import 'package:email_sender/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class CustomRouteMiddleware extends GetMiddleware {
   @override

@@ -1,12 +1,5 @@
-import 'package:email_sender/common/widgets/appbar/appbar.dart';
-import 'package:email_sender/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:email_sender/common/widgets/layouts/sidebars/sidebar.dart';
-import 'package:email_sender/data/repositories/user/user_repository.dart';
 import 'package:email_sender/utils/constants/sizes.dart';
-import 'package:email_sender/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 import '../../utils/constants/colors.dart';
 
 class TabletEmailSend extends StatelessWidget {

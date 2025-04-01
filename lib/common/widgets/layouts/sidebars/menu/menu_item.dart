@@ -3,7 +3,6 @@ import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/sizes.dart' show CustomSizes;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CustomMenuItem extends StatelessWidget {
   const CustomMenuItem({

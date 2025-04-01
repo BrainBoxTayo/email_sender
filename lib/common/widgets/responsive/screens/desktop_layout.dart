@@ -1,9 +1,7 @@
-import 'package:email_sender/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:email_sender/common/widgets/layouts/Headers/custom-headers.dart';
 import 'package:email_sender/common/widgets/layouts/sidebars/sidebar.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/sizes.dart' show CustomSizes;
-import 'package:email_sender/utils/helpers/helper_functions.dart' show CustomHelperFunctions;
 import 'package:flutter/material.dart';
 
 class DesktopLayout extends StatelessWidget {

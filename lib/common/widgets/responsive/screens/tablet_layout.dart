@@ -1,8 +1,5 @@
-import 'package:email_sender/common/widgets/appbar/appbar.dart';
 import 'package:email_sender/common/widgets/layouts/Headers/custom-headers.dart';
 import 'package:email_sender/common/widgets/layouts/sidebars/sidebar.dart';
-import 'package:email_sender/utils/constants/sizes.dart' show CustomSizes;
-import 'package:email_sender/utils/helpers/helper_functions.dart' show CustomHelperFunctions;
 import 'package:flutter/material.dart';
 
 class TabletLayout extends StatelessWidget {
