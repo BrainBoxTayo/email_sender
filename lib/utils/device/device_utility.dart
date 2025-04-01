@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:email_sender/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
@@ -111,6 +112,15 @@ class CustomDeviceUtils {
     }
   }
 
+  static bool isDesktopScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= CustomSizes.desktopScreenSize;
+  }
+  static bool isTabletScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= CustomSizes.tabletScreenSize && MediaQuery.of(context).size.width < CustomSizes.desktopScreenSize;
+  }
+  static bool isMobileScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < CustomSizes.tabletScreenSize;
+  }
 
 // Add more device utility methods as per your specific requirements.
 }

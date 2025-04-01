@@ -1,10 +1,8 @@
-import 'package:email_sender/utils/constants/routes.dart';
-import 'package:email_sender/utils/device/device_utility.dart';
+import 'package:email_sender/utils/routes/routes.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class SidebarController extends GetxController {
-  final activeItem = CustomRoutes.homeScreen.obs;
+  final activeItem = CustomRoutes.dashboard.obs;
   final hoverItem = ''.obs;
 
   void changeActiveItem(String route){

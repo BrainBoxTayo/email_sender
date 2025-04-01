@@ -1,6 +1,7 @@
 import 'package:email_sender/common/widgets/buttons/animated_sign_in.dart' show ButtonStateController;
 import 'package:email_sender/pages/sign_in/authentication/controllers/signup/signup_controller.dart';
 import 'package:email_sender/utils/constants/colors.dart';
+import 'package:email_sender/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -50,8 +51,17 @@ class SignInPage extends StatelessWidget {
                   duration: const Duration(milliseconds: 200),
                   transform: transform,
                   child: OutlinedButton.icon(
-                    onPressed: () {
-                      signInController.signUp();
+                    onPressed: () async {
+                      buttonAnimationController.changeHoverState(); // Temporarily prevent further clicks
+                      final userCredential = await signInController.signUp();
+
+                      if (userCredential != null) {
+                        // Navigate to the next page after successful sign-in
+                        Get.offAllNamed(CustomRoutes.dashboard); // Or any other route
+                      } else {
+                        // Handle sign-in failure (e.g., show error)
+                        Get.snackbar('Sign-in Failed', 'Please try again later.');
+                      }
                     },
                     icon: const Icon(
                       FontAwesomeIcons.microsoft,

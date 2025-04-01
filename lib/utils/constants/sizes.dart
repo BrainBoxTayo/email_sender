@@ -70,6 +70,9 @@ class CustomSizes {
 
   //Navigation Bar Height
 static const double navBarHeight = 80.0;
+
+  static const double desktopScreenSize = 1300;
+  static const tabletScreenSize = 768;
 }
 
 
