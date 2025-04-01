@@ -4,9 +4,9 @@ class CustomColors {
   CustomColors._();
 
   // App theme colors
-  static const Color primary = Color(0xFF4b68ff);
-  static const Color secondary = Color(0xFFFFE24B);
-  static const Color accent = Color(0xFFb0c7ff);
+  static const Color primary = Color(0xFF112D32);   // Deep Teal
+  static const Color secondary = Color(0xFFFFB74D); // Warm Orange
+  static const Color accent = Color(0xFF80D8FF);    // Bright Sky Blue
 
 
   // Gradient Colors
