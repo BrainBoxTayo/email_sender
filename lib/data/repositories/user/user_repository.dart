@@ -1,9 +1,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-
-import 'package:email_sender/utils/formatter/formatter.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -19,20 +18,19 @@ class UserRepository extends GetxController {
     } on FormatException catch (_) {
       throw const FormatException();
     } catch (e) {
-      print(e);
+      throw 'something went wrong ${e.toString()}';
     }
   }
 
   ///Function to fetch user details based on user ID
-  Future<Map<String, dynamic>> getUserDetails(String? userID) async {
+  Future<UserModel> getUserDetails() async {
     DocumentSnapshot<Map<String, dynamic>> userDetails;
     try {
-      userDetails = await _db.collection("Users").doc(userID).get();
-      return userDetails.data() ?? {};
+      userDetails = await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).get();
+      return UserModel.fromSnapshot(userDetails);
     } catch (e) {
-      print("In user repo: ${e}");
+      throw 'something went wrong ${e.toString()}';
     }
-   return {};
   }
 
   ///Function to update user data
@@ -44,13 +42,16 @@ class UserModel {
   String? email;
   String? phoneNumber;
   String? profilePicture;
-
+  DateTime? createdAt;
+  DateTime? updatedAt;
   UserModel(
       {  this.id,
          this.displayName,
          this.email,
          this.phoneNumber,
          this.profilePicture,
+         this.createdAt,
+         this.updatedAt,
         });
 
   static UserModel empty() => UserModel(
@@ -58,7 +59,9 @@ class UserModel {
       email: "",
       phoneNumber: "",
       profilePicture: "",
-      displayName: ""
+      displayName: "",
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
   );
 
   Map<String, dynamic> toJson() {
@@ -66,7 +69,9 @@ class UserModel {
       'Display Name': displayName,
       'Email': email,
       'PhoneNumber': phoneNumber,
-      'ProfilePicture': profilePicture
+      'ProfilePicture': profilePicture,
+      'CreatedAt': createdAt,
+      'UpdatedAt': updatedAt,
     };
   }
 
@@ -80,6 +85,8 @@ class UserModel {
           email: data["email"] ?? '',
           phoneNumber: data["phoneNumber"] ?? '',
           profilePicture: data["profilePicture"] ?? '',
+          createdAt: data["createdAt"],
+          updatedAt: data["updatedAt"],
       );
     }
     return UserModel.empty();

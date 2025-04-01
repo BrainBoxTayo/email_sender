@@ -1,3 +1,4 @@
+import 'package:email_sender/common/bindings/general_bindings.dart';
 import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:email_sender/data/repositories/user/user_repository.dart';
 import 'package:email_sender/pages/not-found/404-not-found.dart';
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
           phoneNumber: user.phoneNumber,
           email: user.email,
           id: user.uid,
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
         );
         Get.find<UserRepository>().saveUserRecord(newUser);
       }
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'Email Sender',
       theme: CustomAppTheme.lightTheme,
       initialRoute: CustomRoutes.dashboard,
+      initialBinding: GeneralBindings(),
       getPages: CustomAppRoute.pages,
       unknownRoute: GetPage(
         name: CustomRoutes.notFoundPage,

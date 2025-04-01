@@ -1,9 +1,12 @@
+import 'package:email_sender/common/controllers/user_controller.dart';
 import 'package:email_sender/common/widgets/products/cards/customRoundedImages.dart';
+import 'package:email_sender/common/widgets/shimmer/custom_shimmer.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/image_strings.dart';
 import 'package:email_sender/utils/constants/sizes.dart';
 import 'package:email_sender/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
@@ -13,6 +16,7 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<ScaffoldState>? scaffoldKey;
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Container(
       decoration: BoxDecoration(
         color: CustomColors.white,
@@ -74,9 +78,28 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
                 height: 40,
               ),
               SizedBox(width: CustomSizes.sm),
+              if (!CustomDeviceUtils.isMobileScreen(context))
+                Obx(
+                  () => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      controller.isLoading.value ?
+                      CustomShimmerEffect(width: 100, height: 20, radius: 10) :
+                      Text(
+                        controller.user.value.displayName ?? 'Name',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      controller.isLoading.value ?
+                      CustomShimmerEffect(width: 100, height: 20, radius: 10) :
+                      Text(
+                        controller.user.value.email ?? 'Email',
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    ],
+                  ),
+                ),
 
-              if (CustomDeviceUtils.isDesktopScreen(context))
-                Text('Name', style: Theme.of(context).textTheme.titleLarge),
             ],
           ),
         ],
