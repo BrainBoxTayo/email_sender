@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class SignupController extends GetxController {
-  static SignupController get instance => Get.find();
+class MicrosoftSignupController extends GetxController {
+  static MicrosoftSignupController get instance => Get.find();
 
   // Sign-up method for Microsoft OAuth provider
   Future<UserCredential?> signUp() async {

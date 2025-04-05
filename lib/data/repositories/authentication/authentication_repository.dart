@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -22,5 +21,24 @@ class AuthenticationRepository extends GetxController {
     update();
   }
 
-
+  Future<UserCredential?> registerWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      return null;
+    } on FirebaseException catch (e) {
+      print(e);
+    } on FormatException catch (_) {
+      print("Format");
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }
