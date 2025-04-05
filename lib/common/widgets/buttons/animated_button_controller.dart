@@ -13,11 +13,6 @@ class ButtonStateController extends GetxController {
     if (!isActive.value){
       isHovered.value = !isHovered.value;
     }
-
-  void onTap (String route) {
-    Get.toNamed(route);
   }
 
-
-}
 }
