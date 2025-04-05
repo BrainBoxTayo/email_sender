@@ -4,7 +4,6 @@ import 'package:email_sender/common/widgets/buttons/animated_button_controller.d
 import 'package:email_sender/pages/signup/controllers/signup/microsoft_signup_controller.dart';
 import 'package:email_sender/pages/signup/widgets/login_widgets.dart';
 import 'package:email_sender/utils/constants/colors.dart';
-import 'package:email_sender/utils/helpers/helper_functions.dart';
 import 'package:email_sender/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,6 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = CustomHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: Container(
         width: double.infinity,

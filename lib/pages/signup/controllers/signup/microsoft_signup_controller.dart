@@ -24,13 +24,11 @@ class MicrosoftSignupController extends GetxController {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       // Handle FirebaseAuthException
-      print("Error signing in with Microsoft: ${e.message}");
       // Optionally, you could show a dialog or use Get.snackbar for error feedback
       Get.snackbar("Sign-in Failed", e.message ?? "Unknown error occurred.");
       return null;
     } catch (e) {
       // Catch any other type of error
-      print("Unknown error occurred: $e");
       Get.snackbar("Error", "An unexpected error occurred.");
       return null;
     }

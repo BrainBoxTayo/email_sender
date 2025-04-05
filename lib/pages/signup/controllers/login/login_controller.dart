@@ -23,7 +23,7 @@ class LoginController extends GetxController {
         //Save user details to local storage
       }
       
-      final userCredentials = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text, password.text);
+      await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text, password.text);
 
       CustomFullScreenLoader.stopLoading();
       AuthenticationRepository.instance.screenRedirect();
