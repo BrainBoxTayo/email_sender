@@ -1,7 +1,7 @@
 
 import 'package:email_sender/common/widgets/buttons/animated_button_controller.dart'
     show ButtonStateController;
-import 'package:email_sender/pages/signup/controllers/controllers/signup/microsoft_signup_controller.dart';
+import 'package:email_sender/pages/signup/controllers/signup/microsoft_signup_controller.dart';
 import 'package:email_sender/pages/signup/widgets/login_widgets.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/helpers/helper_functions.dart';

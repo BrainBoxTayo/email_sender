@@ -1,10 +1,12 @@
 import 'package:email_sender/common/widgets/images/customCircularImage.dart';
 import 'package:email_sender/common/widgets/layouts/sidebars/menu/menu_item.dart';
+import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/image_strings.dart';
 import 'package:email_sender/utils/routes/routes.dart';
 import 'package:email_sender/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CustomSideBar extends StatelessWidget {
@@ -44,8 +46,7 @@ class CustomSideBar extends StatelessWidget {
 
                     //Menu Items
                     CustomMenuItem(icon: Iconsax.user_edit ,itemName: "Profile Setings", route: "/profile_settings",),
-                    CustomMenuItem(icon: Icons.logout ,itemName: "Logout", route: CustomRoutes.logout,),
-
+                    CustomMenuItem(icon: Icons.logout ,itemName: "Logout", onClick: () => Get.find<AuthenticationRepository>().signOut(),),
                   ],
                 ),
               )

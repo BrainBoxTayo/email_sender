@@ -1,6 +1,5 @@
 import 'package:email_sender/common/styles/spacing_styles.dart';
 import 'package:email_sender/pages/signup/widgets/login_widgets.dart';
-import 'package:email_sender/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
@@ -10,7 +9,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = CustomHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

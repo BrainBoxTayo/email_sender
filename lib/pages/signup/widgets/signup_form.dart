@@ -1,7 +1,6 @@
-import 'package:email_sender/pages/signup/controllers/controllers/signup/signup_controller.dart';
+import 'package:email_sender/pages/signup/controllers/signup/signup_controller.dart';
 import 'package:email_sender/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:email_sender/pages/signup/widgets/termsAndConditions.dart';

@@ -38,6 +38,7 @@ class CustomImages {
 
   // -- Animations
   static const String productsIllustration = "assets/images/animations/sammy-line-workout.gif";
+  static const String loadingAnimation = "assets/images/animations/Loading.json";
   static const String productsSaleIllustration = "assets/images/animations/sammy-line-sale.png";
   static const String staticSuccessIllustration = "assets/images/animations/sammy-line-success.png";
   static const String deliveredInPlaneIllustration = "assets/images/animations/sammy-line-come-back-later.png";

@@ -1,5 +1,5 @@
 // ignore: file_names
-import 'package:email_sender/pages/signup/controllers/controllers/signup/signup_controller.dart';
+import 'package:email_sender/pages/signup/controllers/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/sizes.dart';

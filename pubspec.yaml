@@ -96,6 +96,7 @@ flutter:
     - assets/images/animations/72785-searching.json
     - assets/images/animations/98783-packaging-in-progress.json
     - assets/images/animations/cloud-uploading-animation.json
+    - assets/images/animations/Loading.json
     - assets/images/animations/lady-adding-product-in-cart-animation.json
     - assets/images/animations/loader-animation.json
     - assets/images/animations/order-complete-car-delivery-animation.json

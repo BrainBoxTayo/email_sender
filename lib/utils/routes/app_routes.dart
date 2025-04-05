@@ -46,23 +46,19 @@ class CustomAppRoute {
     ),
     GetPage(
       name: CustomRoutes.signupScreen,
-      page: () => SignupScreen(),
-      middlewares: [CustomRouteMiddleware()],
+      page: () => SignupScreen(), 
     ),
     GetPage(
       name: CustomRoutes.forgotPassword,
       page: () => ForgotPassword(),
-      middlewares: [CustomRouteMiddleware()],
     ),
     GetPage(
       name: CustomRoutes.resetPassword,
       page: () => ResetPassword(),
-      middlewares: [CustomRouteMiddleware()],
     ),
     GetPage(
       name: CustomRoutes.verifyEmailScreen,
       page: () => VerifyEmailScreen(),
-      middlewares: [CustomRouteMiddleware()],
     ),
   ];
 }

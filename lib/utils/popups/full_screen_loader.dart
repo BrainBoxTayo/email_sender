@@ -9,32 +9,38 @@ class CustomFullScreenLoader {
     showDialog(
       context: Get.overlayContext!,
       barrierDismissible: false,
-      builder: (_) => PopScope(
-        canPop: false,
-        child: Container(
-          color: CustomHelperFunctions.isDarkMode(Get.context!)
-              ? CustomColors.dark
-              : CustomColors.white,
-          width: double.infinity,
-          height: double.infinity,
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min, // Use minimum space required
-                children: [
-                  CustomAnimationLoaderWidget(
-                    text: text,
-                    animation: animation,
-                    showAction: true,
-                    onActionPressed: () {},
-                    actionText: text,
+      builder:
+          (_) => PopScope(
+            canPop: false,
+            child: Container(
+              color: CustomHelperFunctions.isDarkMode(Get.context!)
+                            ? CustomColors.dark
+                            : CustomColors.white,
+                    width: double.infinity,
+                    height: double.infinity,
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Container(
+                      constraints: BoxConstraints(maxWidth: 500),
+                      
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomAnimationLoaderWidget(
+                            text: text,
+                            animation: animation,
+                            showAction: false,
+                            actionText: '',
+                            onActionPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ],
-              ),
+                ),
             ),
-          ),
-        ),
-      ),
+            )
     );
   }
 

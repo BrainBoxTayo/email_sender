@@ -1,5 +1,5 @@
 import 'package:email_sender/common/widgets/buttons/animated_button_controller.dart';
-import 'package:email_sender/pages/signup/controllers/controllers/signup/microsoft_signup_controller.dart';
+import 'package:email_sender/pages/signup/controllers/signup/microsoft_signup_controller.dart';
 import 'package:email_sender/pages/signup/signInPage.dart';
 import 'package:email_sender/pages/signup/widgets/login_widgets.dart';
 import 'package:email_sender/pages/signup/widgets/signup_form.dart';

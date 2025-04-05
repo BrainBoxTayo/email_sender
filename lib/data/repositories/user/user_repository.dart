@@ -66,12 +66,12 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'DisplayName': displayName,
-      'Email': email,
-      'PhoneNumber': phoneNumber,
-      'ProfilePicture': profilePicture,
-      'CreatedAt': createdAt,
-      'UpdatedAt': updatedAt,
+      'displayName': displayName,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'profilePicture': profilePicture,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
     };
   }
 

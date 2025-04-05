@@ -1,9 +1,9 @@
-import 'package:email_sender/pages/signup/password_configuration/forgot_password.dart';
+import 'package:email_sender/pages/signup/controllers/login/login_controller.dart';
 import 'package:email_sender/utils/routes/routes.dart';
+import 'package:email_sender/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:email_sender/pages/signup/signup.dart';
 import 'package:email_sender/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
@@ -99,7 +99,9 @@ class CustomLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -107,6 +109,8 @@ class CustomLoginForm extends StatelessWidget {
           Text('Email', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: CustomSizes.spaceBtwItems / 2),
           TextFormField(
+            controller: controller.email,
+            validator: (value) => CustomValidator.validateEmail(value),
             decoration: InputDecoration(
               prefixIcon: const Icon(Iconsax.direct_right),
               hintText: 'Enter your email',
@@ -129,26 +133,30 @@ class CustomLoginForm extends StatelessWidget {
           // Password Field
           Text('Password', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: CustomSizes.spaceBtwItems / 2),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Iconsax.password_check),
-              suffixIcon: IconButton(
-                icon: const Icon(Iconsax.eye_slash),
-                onPressed: () {},
-              ),
-              hintText: 'Enter your password',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
-                borderSide: const BorderSide(color: CustomColors.grey),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
-                borderSide: const BorderSide(color: CustomColors.grey),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
-                borderSide: const BorderSide(color: CustomColors.primary),
+          Obx(
+            () =>TextFormField(
+              controller: controller.password,
+              obscureText: controller.hidePassword.value,
+              validator: (value) => CustomValidator.validateEmptyText("Password", value),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: controller.hidePassword.value ? const Icon(Iconsax.eye_slash) : const Icon(Iconsax.eye),
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                ),
+                hintText: 'Enter your password',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
+                  borderSide: const BorderSide(color: CustomColors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
+                  borderSide: const BorderSide(color: CustomColors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(CustomSizes.buttonRadius),
+                  borderSide: const BorderSide(color: CustomColors.primary),
+                ),
               ),
             ),
           ),
@@ -158,20 +166,22 @@ class CustomLoginForm extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: true,
-                    onChanged: (value) {},
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
+              Obx(
+                () =>Row(
+                  children: [
+                    Checkbox(
+                      value: controller.rememberMe.value,
+                      onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
                     ),
-                  ),
-                  Text(
-                    CustomTexts.rememberMe,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
+                    Text(
+                      CustomTexts.rememberMe,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
               ),
               TextButton(
                 onPressed: () => Get.toNamed(CustomRoutes.forgotPassword),
@@ -190,7 +200,7 @@ class CustomLoginForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => controller.emailAndPasswordLogin(),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(

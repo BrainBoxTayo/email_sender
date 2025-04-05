@@ -1,14 +1,8 @@
 import 'package:email_sender/common/widgets/loaders/loaders.dart';
 import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:email_sender/data/repositories/user/user_repository.dart';
-import 'package:email_sender/pages/signup/verify_email.dart';
 import 'package:email_sender/utils/constants/image_strings.dart';
-import 'package:email_sender/utils/device/device_utility.dart';
-import 'package:email_sender/utils/formatter/formatter.dart';
-import 'package:email_sender/utils/helpers/helper_functions.dart';
-import 'package:email_sender/utils/helpers/network_manager.dart';
 import 'package:email_sender/utils/popups/full_screen_loader.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_sender/utils/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -33,55 +27,58 @@ class SignupController extends GetxController {
     try {
       // Start Loading
       CustomFullScreenLoader.openLoadingDialog(
-          'We are Processing Your Information...',
-          CustomImages.productsIllustration);
-      // Check internet Connectivity
-      final isConnected = await CustomDeviceUtils.hasInternetConnection();
-      if (!isConnected) {
-        return;
-      }
+        'We are Processing Your Information...',
+        CustomImages.loadingAnimation,
+      );
       // FormValidation
-      if (signupFormKey.currentState!.validate()) {
+      if (!signupFormKey.currentState!.validate()) {
+        CustomFullScreenLoader.stopLoading();
         return;
       }
       // Privacy Policy Check
 
       if (!checkTermsAndConditions.value) {
+        CustomFullScreenLoader.stopLoading();
         CustomLoaders.warningSnackBar(
-            title: "Accept the Privacy Policy",
-            message:
-                "In order to create an account, you have to read and accept the Privacy Policy and Terms of Use");
+          title: "Accept the Privacy Policy",
+          message:
+              "In order to create an account, you have to read and accept the Privacy Policy and Terms of Use",
+        );
+        return;
       }
 
       // Register user in Firebase / Database & Save user Data
       final user = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
-              email.text.trim(), password.text.trim());
+            email.text.trim(),
+            password.text.trim(),
+          );
       // Save authenticated user data in Firebase Firestore
       final newUser = UserModel(
-          id: user?.user!.uid,
-          displayName: firstName.text.trim() + lastName.text.trim(),
-          email: email.text.trim(),
-          phoneNumber: phoneNumber.text.trim(),
-          profilePicture: '', //TODO: Implement profile picture
-          createdAt: DateTime.now(),
-          updatedAt: DateTime.now()
+        id: user?.user!.uid,
+        displayName: '${firstName.text.trim()} ${lastName.text.trim()}'.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '', //TODO: Implement profile picture
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
       );
 
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser); //Save user to Firebase
-    } catch (e) {
-      CustomLoaders.errorSnackBar(title: 'Oh No!', message: e.toString());
 
-      //Show Success Message
-
-      CustomLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been Created! Verify your email to Continue');
-
-      Get.to(CustomRoutes.verifyEmailScreen);
-
-      // Show some generic message
-    } finally {
       CustomFullScreenLoader.stopLoading();
+      CustomLoaders.successSnackBar(
+        title: 'Congratulations',
+        message: 'Your account has been Created! Verify your email to Continue',
+      );
+      Get.toNamed(
+        CustomRoutes.verifyEmailScreen,
+        arguments: {"email": email.text.trim()},
+      );
+    } catch (e) {
+      CustomFullScreenLoader.stopLoading();
+      CustomLoaders.errorSnackBar(title: 'Oh No!', message: e.toString());
     }
   }
 }

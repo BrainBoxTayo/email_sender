@@ -2,7 +2,6 @@ import 'package:email_sender/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:email_sender/pages/signup/password_configuration/reset_password.dart';
 import 'package:email_sender/utils/constants/sizes.dart';
 import 'package:email_sender/utils/constants/text_strings.dart';
 
