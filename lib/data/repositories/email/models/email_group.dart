@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailGroup {

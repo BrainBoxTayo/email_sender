@@ -5,7 +5,6 @@ import 'package:email_sender/data/repositories/user/user_repository.dart';
 import 'package:email_sender/features/not-found/404-not-found.dart';
 import 'package:email_sender/utils/routes/app_routes.dart';
 import 'package:email_sender/utils/routes/routes.dart' show CustomRoutes;
-import 'package:email_sender/utils/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

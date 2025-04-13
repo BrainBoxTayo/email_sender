@@ -1,18 +1,13 @@
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_sender/common/widgets/loaders/loaders.dart';
 import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
 import 'package:email_sender/data/repositories/email/controllers/email_group_controller.dart';
 import 'package:email_sender/data/repositories/email/email_address_controller.dart';
-import 'package:email_sender/data/repositories/email/models/email_address.dart';
 import 'package:email_sender/data/repositories/email/models/email_group.dart';
 import 'package:email_sender/features/emailSend/widgets/customDropdown.dart';
 import 'package:email_sender/utils/constants/sizes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
 class DesktopEmailSend extends StatelessWidget {

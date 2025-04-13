@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class CustomDropdown extends StatelessWidget {
-  CustomDropdown({super.key, required this.stream, required this.textlabel, this.onChanged,});
+  const CustomDropdown({super.key, required this.stream, required this.textlabel, this.onChanged,});
   
   final Stream<QuerySnapshot> stream;
   final String textlabel;

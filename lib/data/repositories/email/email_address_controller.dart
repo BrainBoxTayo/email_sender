@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_sender/common/widgets/loaders/loaders.dart';
 import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
-import 'package:email_sender/data/repositories/email/models/email_address.dart';
 import 'package:email_sender/data/repositories/email/models/email_group.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class EmailAddressController extends GetxController {
