@@ -3,6 +3,7 @@ import 'package:email_sender/common/widgets/layouts/sidebars/sidebar.dart';
 import 'package:email_sender/utils/constants/colors.dart';
 import 'package:email_sender/utils/constants/sizes.dart' show CustomSizes;
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class DesktopLayout extends StatelessWidget {
   const DesktopLayout({super.key, this.body});
@@ -43,7 +44,7 @@ class DesktopLayout extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.all(CustomSizes.spaceBtwSections),
-                        child: body ?? const SizedBox(),
+                        child: body
                       ),
                     ),
                   ),

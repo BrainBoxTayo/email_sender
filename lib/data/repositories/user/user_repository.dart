@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_sender/data/repositories/authentication/authentication_repository.dart';
+import 'package:email_sender/data/repositories/user/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -36,59 +37,4 @@ class UserRepository extends GetxController {
   ///Function to update user data
 }
 
-class UserModel {
-  String? id;
-  String? displayName;
-  String? email;
-  String? phoneNumber;
-  String? profilePicture;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  UserModel(
-      {  this.id,
-         this.displayName,
-         this.email,
-         this.phoneNumber,
-         this.profilePicture,
-         this.createdAt,
-         this.updatedAt,
-        });
 
-  static UserModel empty() => UserModel(
-      id: "",
-      email: "",
-      phoneNumber: "",
-      profilePicture: "",
-      displayName: "",
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
-  );
-
-  Map<String, dynamic> toJson() {
-    return {
-      'displayName': displayName,
-      'email': email,
-      'phoneNumber': phoneNumber,
-      'profilePicture': profilePicture,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-    };
-  }
-
-  factory UserModel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
-    if (document.data() != null) {
-      final data = document.data()!;
-      return UserModel(
-          id: document.id,
-          displayName: data["displayName"] ?? '',
-          email: data["email"] ?? '',
-          phoneNumber: data["phoneNumber"] ?? '',
-          profilePicture: data["profilePicture"] ?? '',
-          createdAt: data["createdAt"],
-          updatedAt: data["updatedAt"],
-      );
-    }
-    return UserModel.empty();
-  }
-}

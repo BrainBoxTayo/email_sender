@@ -1,6 +1,6 @@
 
 import 'package:email_sender/common/styles/spacing_styles.dart';
-import 'package:email_sender/pages/signup/login.dart';
+import 'package:email_sender/features/signup/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../utils/constants/image_strings.dart';

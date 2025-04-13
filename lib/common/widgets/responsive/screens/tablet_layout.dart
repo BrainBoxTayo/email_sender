@@ -14,15 +14,7 @@ class TabletLayout extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.transparent,
-      // Obx(
-      //       () => Text(
-      //     userDetails.isNotEmpty
-      //         ? "Hi, ${userDetails["Display Name"] ?? "User"}"
-      //         : "Loading...",
-      //     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //     overflow: TextOverflow.ellipsis,
-      //
-      //   ),
+  
       drawer: CustomSideBar(),
       appBar: CustomHeader(scaffoldKey: scaffoldKey,),
       body: body,
